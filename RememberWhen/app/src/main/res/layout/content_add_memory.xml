@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_add_memory"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.lobna.rememberwhen.Activity.AddMemoryActivity"
+    tools:showIn="@layout/activity_add_memory"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <AutoCompleteTextView
+        android:id="@+id/memoryDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your memory"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:text="@string/missingDescriptionError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/memoryDescriptionError"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="-5dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:visibility="invisible"/>
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/memoryDate"
+        android:layout_marginBottom="50dp" />
+
+</LinearLayout>

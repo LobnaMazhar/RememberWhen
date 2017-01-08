@@ -1,6 +1,7 @@
 package com.example.lobna.rememberwhen.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -41,7 +42,7 @@ public class DBSource {
     private ContentValues getContentValuesFromMemory(Memory memory) {
         ContentValues movieContentValues = new ContentValues();
 
-        movieContentValues.put(MemoryTable._ID, memory.getId());
+        //movieContentValues.put(MemoryTable._ID, memory.getId());
         movieContentValues.put(MemoryTable.DESCRIPTION, memory.getDescription());
         movieContentValues.put(MemoryTable.DATE, memory.getDate());
 
@@ -61,8 +62,8 @@ public class DBSource {
     public boolean addMemory(Memory memory) {
         ContentValues contentValues = getContentValuesFromMemory(memory);
 
-        long nRowsAffected = database.insert(MemoryTable.TABLE_NAME, null, contentValues);
-        if(nRowsAffected == 1)
+        long rowID = database.insert(MemoryTable.TABLE_NAME, null, contentValues);
+        if(rowID != -1)
             return true;
         return false;
     }
@@ -92,5 +93,18 @@ public class DBSource {
         cursor.close();
 
         return memories;
+    }
+
+    public Memory getMemory(int ID) {
+        Memory memory;
+
+        Cursor cursor = database.query(MemoryTable.TABLE_NAME,
+                null, MemoryTable._ID + " = ?", new String[]{String.valueOf(ID)}, null, null, null);
+
+        cursor.moveToFirst();
+        memory = getMemoryFromCursor(cursor);
+        cursor.close();
+
+        return memory;
     }
 }

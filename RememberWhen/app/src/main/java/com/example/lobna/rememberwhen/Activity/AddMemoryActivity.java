@@ -49,7 +49,7 @@ public class AddMemoryActivity extends AppCompatActivity {
     }
 
     private void fillDateToEdit() {
-        memory = getIntent().getExtras().getParcelable("memory");
+        memory = getIntent().getExtras().getParcelable("Memory");
 
         memoryDescription.setText(memory.getDescription());
 
@@ -67,11 +67,13 @@ public class AddMemoryActivity extends AppCompatActivity {
             // Check if month is 1 digit *slash is at index 3* ,, or 2 digits *slash is at index 4*
             if(memoryDate.charAt(3) == '/'){ // 1/1/...
                 month = Integer.valueOf(memoryDate.substring(2,3));
+                --month; // 3shan lama b3mlu read b3d l save bykun 0-based fa bzwdu 1 ,, w hna brg3u tany ll asly -1
 
                 // Year starts at index 4 till the end
                 year = Integer.valueOf(memoryDate.substring(4));
             }else if(memoryDate.charAt(4) == '/'){ // 1/11/...
                 month = Integer.valueOf(memoryDate.substring(2,4));
+                --month; // 3shan lama b3mlu read b3d l save bykun 0-based fa bzwdu 1 ,, w hna brg3u tany ll asly -1
 
                 // Year starts at index 5 till the end
                 year = Integer.valueOf(memoryDate.substring(5));
@@ -82,11 +84,13 @@ public class AddMemoryActivity extends AppCompatActivity {
             // Check if month is 1 digit *slash is at index 4* ,, or 2 digits *slash is at index 5*
             if(memoryDate.charAt(4) == '/'){ // 11/1/...
                 month = Integer.valueOf(memoryDate.substring(3,4));
+                --month; // 3shan lama b3mlu read b3d l save bykun 0-based fa bzwdu 1 ,, w hna brg3u tany ll asly -1
 
                 // Year starts at index 5 till the end
                 year = Integer.valueOf(memoryDate.substring(5));
             }else if(memoryDate.charAt(5) == '/'){ // 11/11/...
                 month = Integer.valueOf(memoryDate.substring(3,5));
+                --month; // 3shan lama b3mlu read b3d l save bykun 0-based fa bzwdu 1 ,, w hna brg3u tany ll asly -1
 
                 // Year starts at index 6 till the end
                 year = Integer.valueOf(memoryDate.substring(6));
@@ -97,7 +101,7 @@ public class AddMemoryActivity extends AppCompatActivity {
     public void saveMemory(View view){
       //  memoryDescriptionError.setVisibility(View.INVISIBLE);
 
-        if(memoryDescription.getText() == null){
+        if(memoryDescription.getText().toString().length() == 0){
          //   memoryDescriptionError.setVisibility(View.VISIBLE);
             memoryDescription.setError(getString(R.string.missingDescriptionError));
          //   Toast.makeText(this, "Fill in the description, please", Toast.LENGTH_SHORT).show();
@@ -105,12 +109,14 @@ public class AddMemoryActivity extends AppCompatActivity {
         }
         String description = memoryDescription.getText().toString();
 
-        String date = memoryDate.getDayOfMonth() + "/" + memoryDate.getMonth() + "/" + memoryDate.getYear();
+        String date = memoryDate.getDayOfMonth() + "/" + (memoryDate.getMonth()+1) + "/" + memoryDate.getYear();
 
         if(addMemory) {
             if (DBSource.getInstance().addMemory(new Memory(description, date))) {
                 Toast.makeText(this, "Memory was added successfully ;)", Toast.LENGTH_SHORT).show();
                 finish();
+            }else{
+                Toast.makeText(this, "Report to Lobna, please B|", Toast.LENGTH_LONG).show();
             }
         }else if(!addMemory){
             memory.setDescription(description);
@@ -118,6 +124,8 @@ public class AddMemoryActivity extends AppCompatActivity {
             if (DBSource.getInstance().editMemory(memory)) {
                 Toast.makeText(this, "Memory was edited successfully ;)", Toast.LENGTH_SHORT).show();
                 finish();
+            }else{
+                Toast.makeText(this, "Report to Lobna, please B|", Toast.LENGTH_LONG).show();
             }
         }
     }

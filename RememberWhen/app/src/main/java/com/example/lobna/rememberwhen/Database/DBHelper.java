@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void createMemoriesTable(SQLiteDatabase sqLiteDatabase) {
         String query = "CREATE TABLE " + MemoryTable.TABLE_NAME + " ( " +
-                MemoryTable._ID + " INTEGER NOT NULL PRIMARY KEY UNIQUE, " +
+                MemoryTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MemoryTable.DESCRIPTION + " TEXT NOT NULL UNIQUE, " +
                 MemoryTable.DATE + " DATE NOT NULL " +
                 ");";

@@ -7,13 +7,18 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
+import com.example.lobna.rememberwhen.Database.DBSource;
 import com.example.lobna.rememberwhen.Model.Memory;
 import com.example.lobna.rememberwhen.R;
 
 public class MemoryActivity extends AppCompatActivity {
 
-    Memory memory;
+    private Memory memory;
+
+    private TextView memoryDescription;
+    private TextView memoryDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +27,28 @@ public class MemoryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        memory = new Memory();
-        memory.setId(getIntent().getExtras().getInt("memoryID"));
-        memory.setDescription(getIntent().getExtras().getString("memoryDescription"));
-        memory.setDate(getIntent().getExtras().getString("memoryDate"));
+        memory = getIntent().getExtras().getParcelable("memory");
+
+        memoryDescription = (TextView) findViewById(R.id.memoryDescription);
+        memoryDate = (TextView) findViewById(R.id.memoryDate);
+
+        fillData();
+    }
+
+    private void fillData() {
+        memoryDescription.setText(memory.getDescription());
+        memoryDate.setText(memory.getDate());
+    }
+
+    @Override
+    protected void onResume() {
+        getData();
+        super.onResume();
+    }
+
+    private void getData() {
+        memory = DBSource.getInstance().getMemory(memory.getId());
+        fillData();
     }
 
     public void editMemory(View view){

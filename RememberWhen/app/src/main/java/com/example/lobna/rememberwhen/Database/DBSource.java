@@ -63,7 +63,7 @@ public class DBSource {
         ContentValues contentValues = getContentValuesFromMemory(memory);
 
         long rowID = database.insert(MemoryTable.TABLE_NAME, null, contentValues);
-        if(rowID != -1)
+        if (rowID != -1)
             return true;
         return false;
     }
@@ -73,7 +73,7 @@ public class DBSource {
 
         int nRowsAffected = database.update(MemoryTable.TABLE_NAME, contentValues
                 , MemoryTable._ID + " = ?", new String[]{Integer.toString(memory.getId())});
-        if(nRowsAffected == 1)
+        if (nRowsAffected == 1)
             return true;
         return false;
     }
@@ -110,8 +110,17 @@ public class DBSource {
 
     public boolean deleteMemory(int ID) {
         int nRowsAffected = database.delete(MemoryTable.TABLE_NAME, MemoryTable._ID + " = ?", new String[]{String.valueOf(ID)});
-        if(nRowsAffected == 1)
+        if (nRowsAffected == 1)
             return true;
         return false;
+    }
+
+    public Memory getRandomMemory() {
+        ArrayList<Memory> allMemories = DBSource.getInstance().getMemories();
+        if(allMemories.size() != 0) {
+            int random = 0 + (int) (Math.random() * allMemories.size());
+            return allMemories.get(random);
+        }
+        return null;
     }
 }

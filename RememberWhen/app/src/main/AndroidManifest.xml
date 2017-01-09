@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lobna.rememberwhen">
 
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    
     <application
         android:name=".Application.RememberWhenApplication"
         android:allowBackup="true"
@@ -26,7 +28,10 @@
         <activity
             android:name=".Activity.MemoryActivity"
             android:label="@string/title_activity_memory"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <receiver android:name=".Receiver.NotificationReceiver"/>
     </application>
-
 </manifest>

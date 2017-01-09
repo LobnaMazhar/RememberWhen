@@ -25,9 +25,6 @@ public class MemoryActivity extends Menu {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // set delete option to visible
-       // findViewById(R.id.action_delete).setVisibility(View.VISIBLE);
-
         memory = getIntent().getExtras().getParcelable("memory");
 
         memoryDescription = (TextView) findViewById(R.id.memoryDescription);

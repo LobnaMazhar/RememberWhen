@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
         createMemoriesTable(sqLiteDatabase);
     }
 
-    private void createMemoriesTable(SQLiteDatabase sqLiteDatabase) {
+    private void createMemoriesTable(SQLiteDatabase sqLiteDatabase) { // TODO if changed -> implement onUpdate
         String query = "CREATE TABLE " + MemoryTable.TABLE_NAME + " ( " +
                 MemoryTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 MemoryTable.DESCRIPTION + " TEXT NOT NULL UNIQUE, " +
@@ -37,6 +37,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        // TODO implement when needed.
+        // TODO implement when DB changed to backup old DB.
     }
 }

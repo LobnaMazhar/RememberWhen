@@ -5,4 +5,12 @@
     <string name="title_activity_add_memory">AddMemoryActivity</string>
     <string name="title_activity_memory">MemoryActivity</string>
     <string name="missingDescriptionError">Fill in the memory description!</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_receive_notifications">Receive notifications</string>
+
+
 </resources>

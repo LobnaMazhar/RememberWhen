@@ -107,4 +107,11 @@ public class DBSource {
 
         return memory;
     }
+
+    public boolean deleteMemory(int ID) {
+        int nRowsAffected = database.delete(MemoryTable.TABLE_NAME, MemoryTable._ID + " = ?", new String[]{String.valueOf(ID)});
+        if(nRowsAffected == 1)
+            return true;
+        return false;
+    }
 }

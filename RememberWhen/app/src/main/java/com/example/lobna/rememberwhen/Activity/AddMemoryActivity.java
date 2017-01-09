@@ -116,7 +116,7 @@ public class AddMemoryActivity extends AppCompatActivity {
                 Toast.makeText(this, "Memory was added successfully ;)", Toast.LENGTH_SHORT).show();
                 finish();
             }else{
-                Toast.makeText(this, "Report to Lobna, please B|", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "NOT ADDED, Report to Lobna, please B|", Toast.LENGTH_LONG).show();
             }
         }else if(!addMemory){
             memory.setDescription(description);
@@ -125,7 +125,7 @@ public class AddMemoryActivity extends AppCompatActivity {
                 Toast.makeText(this, "Memory was edited successfully ;)", Toast.LENGTH_SHORT).show();
                 finish();
             }else{
-                Toast.makeText(this, "Report to Lobna, please B|", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "NOT EDITED, Report to Lobna, please B|", Toast.LENGTH_LONG).show();
             }
         }
     }

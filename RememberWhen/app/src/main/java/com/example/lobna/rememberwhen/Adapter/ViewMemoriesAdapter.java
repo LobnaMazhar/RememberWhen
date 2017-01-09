@@ -58,7 +58,5 @@ public class ViewMemoriesAdapter extends RecyclerView.Adapter<ViewMemoriesAdapte
             super(itemView);
             memoryDescription = (TextView) itemView.findViewById(R.id.memoryViewItemText);
         }
-
-
     }
 }

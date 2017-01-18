@@ -1,10 +1,12 @@
 package com.example.lobna.rememberwhen.Receiver;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.example.lobna.rememberwhen.Activity.AddMemoryActivity;
@@ -35,7 +37,7 @@ public class NotificationReceiver extends BroadcastReceiver{
         }else{
             openMemoryIntent = new Intent(context, AddMemoryActivity.class);
             memory = new Memory(); // Fake memory for notification description.
-            memory.setDescription("Why don't you add some memories?");
+            memory.setDescription(context.getString(R.string.addMemory));
         }
         openMemoryIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Even if the app is opened (same memory or any other activity) ,, the memory notification opening will replace any opened view.
 
@@ -48,6 +50,8 @@ public class NotificationReceiver extends BroadcastReceiver{
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(memory.getDescription())
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setAutoCancel(true);
 
         notificationManager.notify(requestCode, notificationBuilder.build());

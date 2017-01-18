@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/noMemoriesBackgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/ic_menu_edit"/>
+
+    <TextView
+        android:id="@+id/noMemoriesBackgroundText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addMemory"
+        android:layout_marginTop="180dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_gravity="center"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/allMemories"
-        android:divider="@color/colorAccent"
-        android:dividerHeight="1dp"></android.support.v7.widget.RecyclerView>
+        android:id="@+id/allMemories"></android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+</FrameLayout>

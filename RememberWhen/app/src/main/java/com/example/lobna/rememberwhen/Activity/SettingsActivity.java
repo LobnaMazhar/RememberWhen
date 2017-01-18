@@ -2,35 +2,19 @@ package com.example.lobna.rememberwhen.Activity;
 
 
 import android.annotation.TargetApi;
-import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.SwitchPreference;
-import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.preference.SwitchPreference;
 
 import com.example.lobna.rememberwhen.Application.RememberWhenApplication;
 import com.example.lobna.rememberwhen.R;
-import com.example.lobna.rememberwhen.Receiver.NotificationReceiver;
 import com.example.lobna.rememberwhen.Utilities.Utility;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**

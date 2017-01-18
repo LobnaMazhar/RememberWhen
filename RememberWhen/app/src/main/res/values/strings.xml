@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RememberWhen</string>
+    <string name="app_name">Remember When!</string>
     <string name="action_settings">Settings</string>
     <string name="action_delete">Delete</string>
     <string name="title_activity_add_memory">AddMemoryActivity</string>
@@ -11,6 +11,7 @@
     <string name="pref_header_notifications">Notifications</string>
 
     <string name="pref_title_receive_notifications">Receive notifications</string>
+    <string name="addMemory">Why don\'t you add some memories?</string>
 
 
 </resources>
